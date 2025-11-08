@@ -17,7 +17,7 @@ export default function HeroSection() {
           <div className="flex flex-col items-center">
             <div className="relative mb-4">
               <img
-                src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=400&h=400&fit=crop"
+                src="/womanhero.png"
                 alt="Radio Host"
                 className="w-64 h-64 object-cover rounded-2xl shadow-2xl"
               />
