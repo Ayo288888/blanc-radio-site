@@ -3,30 +3,27 @@ export default function HeroSection() {
     <section className="relative bg-gradient-to-r from-[#002D72] to-[#0049A8] py-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="text-center md:text-left">
-            <div className="relative inline-block">
-              <h1 className="text-7xl md:text-8xl font-bold text-white italic mb-4" style={{ fontFamily: 'Georgia, serif', transform: 'rotate(18.75deg)' }}>
-                Blanc Radio
-              </h1>
-              <div className="absolute top-full left-0 right-0 h-20 overflow-hidden opacity-30">
-                <h1 className="text-7xl md:text-8xl font-bold text-white italic transform scale-y-[-1] blur-sm" style={{ fontFamily: 'Georgia, serif' }}>
-                  Blanc Radio
-                </h1>
-              </div>
-            </div>
-          </div>
+          <div className="flex-1">
+          <div className="relative">
+            {/* Yellow circle accent */}
+            <div className="absolute -top-6 -left-6 w-16 h-16 bg-yellow-400 rounded-full opacity-80"></div>
 
+            <h1 className="text-5xl md:text-6xl font-bold text-blue-100 italic drop-shadow-lg relative z-10">
+              Blanc Radio
+            </h1>
+            <p className="text-blue-200 text-lg mt-4">Unfiltered Vibes, 24/7</p>
+          </div>
+        </div>
           <div className="flex flex-col items-center">
             <div className="relative mb-4">
               <img
-                src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=400&h=400&fit=crop"
+                src="/heroimage.png"
                 alt="Radio Host"
                 className="w-64 h-64 object-cover rounded-2xl shadow-2xl"
               />
             </div>
             <button className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full font-semibold text-lg transition-all transform hover:scale-105 shadow-lg mb-2">
-              Listen Live
-            </button>
+              Listen Live            </button>
             <p className="text-white text-xl font-semibold">The Talk Show</p>
           </div>
         </div>
