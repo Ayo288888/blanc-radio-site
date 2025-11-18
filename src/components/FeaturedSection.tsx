@@ -45,7 +45,7 @@ export default function FeaturedSection() {
               key={index}
               className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
             >
-              <div className="aspect-[4/5] relative">
+              <div className="aspect-[16/9] relative">
                 <img
                   src={feature.image}
                   alt={feature.category}
