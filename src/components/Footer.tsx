@@ -7,10 +7,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-5 gap-8 mb-8">
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="bg-yellow-400 rounded-full p-2">
-                <Radio className="w-6 h-6 text-white" />
-              </div>
-              <span className="text-xl font-bold">Blanc Radio</span>
+              <img src="/logo2.png" alt="Blanc Radio" className="h-10 w-auto" />
             </div>
             <p className="text-blue-200 mb-4">Unfiltered Vibes, 24/7</p>
             <div className="flex gap-3">

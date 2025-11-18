@@ -4,22 +4,22 @@ const features = [
   {
     category: 'SPORTS',
     title: 'The league — where football meets drama every weekend.',
-    image: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&h=600&fit=crop',
+    image: '/sport.png',
   },
   {
     category: 'NEWS',
     title: 'Reality check — where today\'s headlines shape tomorrow\'s conversations.',
-    image: 'https://images.unsplash.com/photo-1586339949916-3e9457bef6d3?w=800&h=600&fit=crop',
+    image: '/news.png',
   },
   {
     category: 'ENTERTAINMENT',
     title: 'Afrobeats — the rhythm that moves the world from Nigeria.',
-    image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&h=600&fit=crop',
+    image: '/enter.png',
   },
   {
     category: 'MUSIC',
     title: 'Celebrating the power of music.',
-    image: 'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=800&h=600&fit=crop',
+    image: '/music.png',
   },
 ];
 

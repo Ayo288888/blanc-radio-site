@@ -5,22 +5,22 @@ const features = [
   {
     category: 'SPORTS',
     title: 'The Premier League — where football meets drama every weekend.',
-    image: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400&h=300&fit=crop',
+    image: '/sport.png',
   },
   {
     category: 'NEWS',
     title: 'Nigerian News — where today\'s headlines shape tomorrow\'s conversations.',
-    image: 'https://images.unsplash.com/photo-1586339949916-3e9457bef6d3?w=400&h=300&fit=crop',
+    image: '/news.png',
   },
   {
     category: 'ENTERTAINMENT',
     title: 'Afrobeats — the rhythm that moves the world from Nigeria.',
-    image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=300&fit=crop',
+    image: '/enter.png',
   },
   {
     category: 'MUSIC',
     title: 'Celebrating the power of music that power.',
-    image: 'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=400&h=300&fit=crop',
+    image: '/music.png',
   },
 ];
 
@@ -39,18 +39,33 @@ const topListeners = [
   { name: 'Fatima', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=40&h=40&fit=crop' },
   { name: 'Alilleman', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop' },
   { name: 'Olamide Blessing', avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop' },
-  { name: 'Okoro Ezeh', avatar: 'https://images.unsplash.com/photo-1507009750509-52f0528438b9?w=40&h=40&fit=crop' },
-  { name: 'Mary Okpara', avatar: 'https://images.unsplash.com/photo-1517849845537-1d51a20414de?w=40&h=40&fit=crop' },
+  { name: 'Okoro Ezeh', avatar: 'https://cdn.pixabay.com/photo/2022/12/24/21/14/portrait-7676482_1280.jpg' },
+  { name: 'Mary Okpara', avatar: 'https://cdn.pixabay.com/photo/2014/11/26/18/05/singer-546623_960_720.jpg' },
 ];
 
 const avatarImages = [
   'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=32&h=32&fit=crop',
   'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop',
   'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=32&h=32&fit=crop',
-  'https://images.unsplash.com/photo-1507009750509-52f0528438b9?w=32&h=32&fit=crop',
+  'https://cdn.pixabay.com/photo/2014/11/26/18/05/singer-546623_960_720.jpg?w=32&h=32&fit=crop',
 ];
 
 export default function CommunityPage() {
+  const [discussionList, setDiscussionList] = useState(discussions);
+  const [showForm, setShowForm] = useState(false);
+  const [newQuestion, setNewQuestion] = useState('');
+
+  const handleCreateToggle = () => setShowForm((s) => !s);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newQuestion.trim()) return;
+    const newPost = { question: newQuestion.trim(), participants: 1 };
+    setDiscussionList((prev) => [newPost, ...prev]);
+    setNewQuestion('');
+    setShowForm(false);
+  };
+
   return (
     <div className="min-h-screen bg-white">
       <section className="py-12 bg-white">
@@ -58,10 +73,10 @@ export default function CommunityPage() {
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-3xl font-bold text-gray-900">Featuring</h2>
             <div className="flex gap-2">
-              <button className="p-2 rounded-full bg-white border border-gray-300 hover:bg-gray-100 transition-all">
+              <button aria-label="Previous featured" className="p-2 rounded-full bg-white border border-gray-300 hover:bg-gray-100 transition-all">
                 <ChevronLeft className="w-5 h-5" />
               </button>
-              <button className="p-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-all">
+              <button aria-label="Next featured" className="p-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-all">
                 <ChevronRight className="w-5 h-5" />
               </button>
             </div>
@@ -99,14 +114,34 @@ export default function CommunityPage() {
             <div className="md:col-span-2">
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-3xl font-bold text-gray-900">Discussions</h2>
-                <button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors">
+                <button onClick={handleCreateToggle} className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors">
                   <Plus className="w-4 h-4" />
-                  <span>Create A New Post</span>
+                  <span>{showForm ? 'Cancel' : 'Create A New Post'}</span>
                 </button>
               </div>
+              {showForm && (
+                <form onSubmit={handleSubmit} className="bg-white rounded-xl p-4 shadow-sm mb-4">
+                  <label htmlFor="question" className="block mb-2 font-medium text-gray-700">Post Question</label>
+                    <textarea
+                      id="question"
+                    value={newQuestion}
+                    onChange={(e) => setNewQuestion(e.target.value)}
+                    className="w-full border border-gray-200 rounded-md p-2 mb-3"
+                    rows={3}
+                    placeholder="Ask something to the community..."
+                  />
+
+                  {/* participants input removed - posts default to 1 participant */}
+
+                  <div className="flex items-center gap-2">
+                    <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg">Post</button>
+                    <button type="button" onClick={() => setShowForm(false)} className="px-4 py-2 rounded-lg border">Cancel</button>
+                  </div>
+                </form>
+              )}
 
               <div className="space-y-4">
-                {discussions.map((discussion, index) => (
+                {discussionList.map((discussion, index) => (
                   <div key={index} className="bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow">
                     <p className="text-gray-800 font-medium mb-3">{discussion.question}</p>
                     <div className="flex gap-2">
